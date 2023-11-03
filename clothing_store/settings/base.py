@@ -175,7 +175,7 @@ JAZZMIN_SETTINGS = {
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_header": "CS ADMIN",
     # Logo to use for your site, must be present in static files, used for brand on top left
-    # "site_logo": "media/banner2-icon3.png",
+    "site_logo": "media/logo.jpg",
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
@@ -183,9 +183,9 @@ JAZZMIN_SETTINGS = {
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
     "site_icon": "media/logo.jpg",
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to Clothing Store",
+    "welcome_sign": "Welcome to Clothing Store Admin Section",
     # Copyright on the footer
-    "copyright": "CS Copyright",
+    "copyright": "Clothing Store Ltd",
     # The model admin to search from the search bar, search bar omitted if excluded
     "search_model": "accounts.User",
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
@@ -213,7 +213,7 @@ JAZZMIN_SETTINGS = {
     #############
     # Additional links to include in the user menu on the top right ("app" url type is not allowed)
     "usermenu_links": [
-        {"name": "ClothingStore FrontPage", "url": "/", "new_window": True},
+        {"name": "Clothing Store FrontPage", "url": "/", "new_window": True},
         {"model": "accounts.user"},
     ],
     #############
