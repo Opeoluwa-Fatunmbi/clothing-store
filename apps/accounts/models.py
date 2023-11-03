@@ -21,6 +21,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_superuser = models.BooleanField(_("superuser_status"), default=False)
     is_email_verified = models.BooleanField(_("email_verified"), default=False)
     terms_agreement = models.BooleanField(_("terms_agreement"), default=False)
+    avatar = models.ImageField(upload_to="avatars/", null=True)
 
     objects = CustomUserManager()
 
@@ -32,4 +33,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         return f"{self.first_name} {self.last_name}"
 
     def __str__(self):
-        return self.email
+        return self.full_name
