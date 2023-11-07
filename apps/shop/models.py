@@ -6,13 +6,13 @@ from apps.accounts.models import User
 
 # Create your models here.
 
+
 class Category(BaseModel):
     name = models.CharField(max_length=500)
     slug = AutoSlugField(populate_from="name", unique=True, always_update=True)
 
     class Meta:
         verbose_name_plural = "Categories"
-
 
     def __str__(self):
         return self.name
@@ -28,7 +28,7 @@ class Product(BaseModel):
 
     def __str__(self):
         return self.name
-    
+
 
 RATING_CHOICES = (
     (5, 5),
@@ -38,7 +38,8 @@ RATING_CHOICES = (
     (1, 1),
 )
 
-class Review(BaseModel):   
+
+class Review(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     rating = models.SmallIntegerField(choices=RATING_CHOICES)
@@ -46,7 +47,3 @@ class Review(BaseModel):
 
     def __str__(self):
         return self.user.full_name
-    
-
-
-

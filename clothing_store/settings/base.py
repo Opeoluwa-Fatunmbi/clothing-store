@@ -235,7 +235,6 @@ JAZZMIN_SETTINGS = {
         "auth.Group": "fas fa-users",
         "accounts.user": "fas fa-user-cog",
         "sites.site": "fas fa-globe",
-
         "shop.category": "fas fa-list",
         "shop.product": "fas fa-tshirt",
         "shop.review": "fas fa-comments",
