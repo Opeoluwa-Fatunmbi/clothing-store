@@ -29,6 +29,14 @@ class Product(BaseModel):
     def __str__(self):
         return self.name
 
+    @property
+    def image_url(self):
+        try:
+            url = self.image.url
+        except:
+            url = ""
+        return url
+
 
 RATING_CHOICES = (
     (5, 5),
