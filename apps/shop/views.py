@@ -10,5 +10,9 @@ class HomeView(View):
     def get(self, request):
         products = Product.objects.all()[0:6]
         categories = Category.objects.all()
-        context = {"products": products,"categories": categories, "rating_range": range(5)}
+        context = {
+            "products": products,
+            "categories": categories,
+            "rating_range": range(5),
+        }
         return render(request, "shop/home.html", context)
