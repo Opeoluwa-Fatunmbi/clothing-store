@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from apps.accounts.models import User
 from apps.shop.models import Product
 
 # Create your views here.

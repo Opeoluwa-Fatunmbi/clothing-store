@@ -3,6 +3,7 @@ from apps.common.models import BaseModel
 from autoslug import AutoSlugField
 from django.utils.translation import gettext_lazy as _
 from apps.accounts.models import User
+from statistics import mean
 
 # Create your models here.
 
@@ -36,6 +37,19 @@ class Product(BaseModel):
         except:
             url = ""
         return url
+    
+    @property
+    def avg_rating(self):
+        reviews = self.reviews.values_list("rating", flat=True)
+        avg_rating = round(mean(list(reviews)) / len(reviews))
+        return avg_rating
+    
+    @property
+    def avg_rating_range(self):
+        reviews = self.reviews.values_list("rating", flat=True)
+        avg_rating = round(mean(list(reviews)) / len(reviews))
+        return range(avg_rating)
+
 
 
 RATING_CHOICES = (
@@ -49,7 +63,7 @@ RATING_CHOICES = (
 
 class Review(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews")
     rating = models.SmallIntegerField(choices=RATING_CHOICES)
     text = models.TextField()
 

@@ -47,13 +47,14 @@
                     <h6>${{ product.price }}</h6>
                     <p>{{ product.desc|truncatechars:100 }}</p>
                     <ul class="stars">
+                        
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                     </ul>
-                    <span>Reviews (24)</span>
+                    <span>Reviews {{ product.reviews.count }}</span>
                     </div>
                 </div>
             </div>
