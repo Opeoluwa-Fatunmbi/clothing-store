@@ -41,14 +41,15 @@ class Product(BaseModel):
     @property
     def avg_rating(self):
         reviews = self.reviews.values_list("rating", flat=True)
-        avg_rating = round(mean(list(reviews)) / len(reviews))
+        avg_rating = round(mean(list(reviews)))
         return avg_rating
     
     @property
     def avg_rating_range(self):
-        reviews = self.reviews.values_list("rating", flat=True)
-        avg_rating = round(mean(list(reviews)) / len(reviews))
-        return range(avg_rating)
+        return range(self.avg_rating)
+    
+    class Meta:
+        ordering = ["-created_at"]
 
 
 
