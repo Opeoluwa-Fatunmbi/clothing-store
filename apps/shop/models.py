@@ -44,10 +44,6 @@ class Product(BaseModel):
         avg_rating = round(mean(list(reviews)))
         return avg_rating
 
-    @property
-    def avg_rating_range(self):
-        return range(self.avg_rating)
-
     class Meta:
         ordering = ["-created_at"]
 
