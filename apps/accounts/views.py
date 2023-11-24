@@ -15,7 +15,9 @@ class RegisterView(View):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect("")
+            return redirect("accounts:login")
+        context = {"form": form}
+        return render(request, "accounts/register.html", context)
 
 
 class LoginView(View):

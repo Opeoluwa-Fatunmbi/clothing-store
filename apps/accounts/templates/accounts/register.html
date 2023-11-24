@@ -12,7 +12,8 @@
         <h5 class="card-title">REGISTER USER</h5>
       </div>
       <div class="card-body">
-        <form>
+        <form method="POST">
+          {% csrf_token %}
             {{form|crispy}}
           <button type="submit" class="btn btn-primary">Register</button>
         </form>
