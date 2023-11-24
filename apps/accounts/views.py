@@ -12,6 +12,9 @@ class RegisterView(View):
         return render(request, "accounts/register.html", context)
 
     def post(self, request):
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
         return redirect("")
 
 
