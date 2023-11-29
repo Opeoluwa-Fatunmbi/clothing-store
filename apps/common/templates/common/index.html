@@ -13,23 +13,30 @@
     <title>Clothing Store</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
-<!--
-
-TemplateMo 546 Sixteen Clothing
-
-https://templatemo.com/tm-546-sixteen-clothing
-
--->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
-    <link rel="stylesheet" href="{% static 'assets/css/owl.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
 
+    <!--Sweet alert-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script src="{% static 'assets/js/toast.js' %}"></script>
   </head>
 
   <body>
+    {% if messages %}
+      {% for message in messages %}
+        <script>
+          Toast.fire({
+            icon: '{{ message.level_tag }}',
+            title: '{{ message }}'
+          })
+        </script>
+      {% endfor %}
+    {% endif %}
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -45,7 +52,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="/"><h2>Clothing<em>Store</em></h2></a>
+          <a class="navbar-brand" href="/"><h2>Clothing <em>Store</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -66,26 +73,24 @@ https://templatemo.com/tm-546-sixteen-clothing
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-
     {% block content %}
-    {% endblock  %}
-
+    {% endblock%}
     <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-              <p>Copyright &copy; {%now 'Y'%} Clothing Store Co., Ltd.
+              <p>Copyright &copy; {% now "Y" %} Clothing Store Co., Ltd.
             
             - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
             </div>
@@ -96,16 +101,16 @@ https://templatemo.com/tm-546-sixteen-clothing
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 
     <!-- Additional Scripts -->
-    <script src="{% static 'assets/js/custom.js'%}"></script>
-    <script src="{% static 'assets/js/owl.js'%}"></script>
-    <script src="{% static 'assets/js/slick.js'%}"></script>
-    <script src="{% static 'assets/js/isotope.js'%}"></script>
-    <script src="{% static 'assets/js/accordions.js'%}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'assets/js/owl.js' %}"></script>
+    <script src="{% static 'assets/js/slick.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.js' %}"></script>
+    <script src="{% static 'assets/js/accordions.js' %}"></script>
 
 
     <script language = "text/Javascript"> 
@@ -118,8 +123,6 @@ https://templatemo.com/tm-546-sixteen-clothing
           }
       }
     </script>
-
-
   </body>
 
 </html>

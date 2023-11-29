@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .forms import RegisterForm, LoginForm
+from django.contrib.auth import authenticate, login, logout
+import sweetify
+from django.contrib import messages
 
 # Create your views here.
 
@@ -27,4 +30,15 @@ class LoginView(View):
         return render(request, "accounts/login.html", context)
 
     def post(self, request):
-        return redirect("")
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get("email")
+            password = form.cleaned_data.get("password")
+            user = authenticate(request, email=email, password=password)
+            if not user:
+                messages.error(request, "Invalid credentials")
+                redirect("accounts:login")
+            login(request, user)
+            redirect("/")
+        context = {"form": form}
+        return render(request, "accounts/login.html", context)
