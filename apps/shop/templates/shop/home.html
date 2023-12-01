@@ -1,44 +1,42 @@
-{% extends "common/index.html" %}
+{% extends 'common/index.html' %}
 {% load static %}
 {% block content %}
-
 <!-- Page Content -->
 <!-- Banner Starts Here -->
 <div class="banner header-text">
     <div class="owl-banner owl-carousel">
-        <div class="banner-item-01">
-            <div class="text-content">
-              <h4>Best Offer</h4>
-              <h2>New Arrivals On Sale</h2>
-            </div>
+    <div class="banner-item-01">
+        <div class="text-content">
+        <h4>Best Offer</h4>
+        <h2>New Arrivals On Sale</h2>
         </div>
-        <div class="banner-item-02">
-            <div class="text-content">
-              <h4>Flash Deals</h4>
-              <h2>Get your best products</h2>
-            </div>
+    </div>
+    <div class="banner-item-02">
+        <div class="text-content">
+        <h4>Flash Deals</h4>
+        <h2>Get your best products</h2>
         </div>
-        <div class="banner-item-03">
-            <div class="text-content">
-              <h4>Last Minute</h4>
-              <h2>Grab last minute deals</h2>
-            </div>
-          </div>
+    </div>
+    <div class="banner-item-03">
+        <div class="text-content">
+        <h4>Last Minute</h4>
+        <h2>Grab last minute deals</h2>
         </div>
-      </div>
+    </div>
+    </div>
+</div>
 <!-- Banner Ends Here -->
-  
+
 <div class="latest-products">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-              <div class="section-heading">
-                <h2>Latest Products</h2>
-                <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
-              </div>
-            </div>
-
-            {% for product in products %}
+    <div class="row">
+        <div class="col-md-12">
+        <div class="section-heading">
+            <h2>Latest Products</h2>
+            <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
+        </div>
+        </div>
+        {% for product in products %}
             <div class="col-md-4">
                 <div class="product-item">
                     <a href="#"><img style="height: 10em; object-fit: cover;" src="{{ product.image_url }}" alt=""></a>
@@ -46,53 +44,53 @@
                     <a href="#"><h4>{{ product.name }}</h4></a>
                     <h6>${{ product.price }}</h6>
                     <p>{{ product.desc|truncatechars:100 }}</p>
-
                     <ul class="stars">
                         {% for i in rating_range %}
-                          <li><i 
-                            class="fa fa-star"
-                            {% if forloop.counter > product.avg_rating %}
-                            style="color: #121212"
-                            {% endif %}
-                            >
-                            </i>
-                          </li>
+                            <li>
+                                <i 
+                                    class="fa fa-star" 
+                                    {% if forloop.counter > product.avg_rating %}
+                                    style="color:#121212;"
+                                    {% endif %}
+                                    >
+                                </i>
+                            </li>
                         {% endfor %}
                     </ul>
-                    <span>Reviews {{ product.reviews.count }}</span>
+                    <span>Reviews ({{product.reviews.count}})</span>
                     </div>
                 </div>
             </div>
         {% endfor %}
-
-
-
-      <div class="best-features">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="section-heading">
-                <h2>About Clothing Store</h2>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="left-content">
-                <h4>Looking for the best products?</h4>
-                <ul class="featured-list">
-                  {%for category in categories %}
-                    <li><a href="#">{{ category.name }}</a></li>
-                  {% endfor %}
-                </ul>
-                <a href="#" class="filled-button">Read More</a>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="right-image">
-                <img src="{% static 'media/feature-image.jpg'%}" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
+    </div>
 </div>
 
+<div class="best-features">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <div class="section-heading">
+            <h2>About Clothing Store</h2>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="left-content">
+            <h4>Looking for the best products?</h4>
+            <ul class="featured-list">
+                {% for category in categories %}
+                    <li><a href="#">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <a href="#" class="filled-button">See More</a>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="right-image">
+            <img src="{% static 'media/feature-image.jpg' %}" alt="">
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
 {% endblock %}
