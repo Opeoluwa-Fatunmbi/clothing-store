@@ -7,7 +7,6 @@ from django.db.models import Q
 
 class SiteDetail(BaseModel):
     name = models.CharField(max_length=200, default="Clothing store")
-    email = models.EmailField(default="email@gmail.com")
     desc = models.TextField(null=True)
     fb = models.URLField(verbose_name="Facebook", default="https://www.facebook.com/")
     tw = models.URLField(verbose_name="Twitter", default="https://twitter.com/")
@@ -48,6 +47,14 @@ class TeamMember(BaseModel):
     tw = models.URLField(verbose_name="Twitter", default="https://twitter.com/")
     ig = models.URLField(verbose_name="Instagram", default="https://www.instagram.com/")
     ln = models.URLField(verbose_name="LinkedIn", default="https://www.linkedin.com/")
+
+    @property
+    def avatar_url(self):
+        try:
+            url = self.avatar.url
+        except:
+            url = ""
+        return url
 
     class Meta:
         verbose_name = "Team Member"
