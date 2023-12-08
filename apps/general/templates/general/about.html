@@ -1,7 +1,6 @@
 {% extends "common/index.html" %}
 {% load static %}
 {% block content %}
-
     <!-- Page Content -->
     <div class="page-heading about-heading header-text">
       <div class="container">
@@ -27,13 +26,13 @@
           </div>
           <div class="col-md-6">
             <div class="right-image">
-              <img src="{% static 'media/images/feature-image.jpg'%}" alt="">
+              <img src="{% static 'media/feature-image.jpg' %}" alt="">
             </div>
           </div>
           <div class="col-md-6">
             <div class="left-content">
               <h4>Who we are &amp; What we do?</h4>
-              <p>{{sitedetail.desc }}</p>
+              <p>{{sitedetail.desc}}</p>
               <ul class="social-icons">
                 <li><a target="_blank" href="{{sitedetail.fb}}"><i class="fa fa-facebook"></i></a></li>
                 <li><a target="_blank" href="{{sitedetail.tw}}"><i class="fa fa-twitter"></i></a></li>
@@ -56,32 +55,30 @@
             </div>
           </div>
           {% for member in teammembers %}
-          <div class="col-md-4">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img style="height: 15em; object-fit: cover;" src="{{ member.avatar_url }}" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
+            <div class="col-md-4">
+              <div class="team-member">
+                <div class="thumb-container">
+                  <img style="height: 15em; object-fit: cover;" src="{{ member.avatar_url }}" alt="">
+                  <div class="hover-effect">
+                    <div class="hover-content">
+                      <ul class="social-icons">
+                        <li><a target="_blank" href="{{ member.fb }}"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="{{ member.tw }}"><i class="fa fa-twitter"></i></a></li>
+                        <li><a target="_blank" href="{{ member.ln }}"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a target="_blank" href="{{ member.ig }}"><i class="fa fa-instagram"></i></a></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="down-content">
-                <h4>{{ member.name }}</h4>
-                <span>{{ member.role }}</span>
-                <p>{{member.desc}}.</p>
+                <div class="down-content">
+                  <h4>{{ member.name }}</h4>
+                  <span>{{ member.role }}</span>
+                  <p>{{member.desc}}.</p>
+                </div>
               </div>
             </div>
-          </div>
           {% endfor %}
         </div>
       </div>
     </div>
-
-
 {% endblock %}
