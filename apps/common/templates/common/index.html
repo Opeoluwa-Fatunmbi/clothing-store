@@ -14,7 +14,7 @@
       rel="stylesheet"
     />
 
-    <title>Clothing Store</title>
+    <title>Clothing Store | {% block title %} {% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -98,16 +98,17 @@
               <li class="nav-item {% if request.path == contact_url %}active{% endif %}">
                 <a class="nav-link" href="{% url 'general:contact' %}">Contact Us</a>
               </li>
+              {% if not user.is_authenticated %}
+                {% url 'register' as register_url %}
+                <li class="nav-item {% if request.path == register_url %}active{% endif %}">
+                  <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+                </li>
 
-              {% url 'register' as register_url %}
-              <li class="nav-item {% if request.path == register_url %}active{% endif %}">
-                <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
-              </li>
-
-              {% url 'login' as login_url %}
-              <li class="nav-item {% if request.path == login_url %}active{% endif %}">
-                <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
-              </li>
+                {% url 'login' as login_url %}
+                <li class="nav-item {% if request.path == login_url %}active{% endif %}">
+                  <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                </li>
+              {% endif %}
             </ul>
           </div>
         </div>

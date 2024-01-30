@@ -1,0 +1,15 @@
+{% extends 'common/index.html' %} {% load static %} {% load crispy_forms_tags %}
+{% block title %} Email Verification Sent {% endblock %}
+{% block content %}
+
+  <div class="card custom-card" style="padding: 10em 30em 5em 30em">
+    <div class="card-header">
+      <h5 class="card-title">EMAIL SENT</h5>
+    </div>
+    <div class="card-body">
+      <p>Check your email for a verification link.</p>
+      <p>Didn't receive an email? <a href="{% url "accounts:resend-verification-email" %}">Click Here!</a></p>
+    </div>
+  </div>
+
+{% endblock %}

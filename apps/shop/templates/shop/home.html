@@ -1,5 +1,6 @@
 {% extends 'common/index.html' %}
 {% load static %}
+{% block title %}Home{% endblock %}
 {% block content %}
 <!-- Page Content -->
 <!-- Banner Starts Here -->
@@ -41,23 +42,23 @@
                 <div class="product-item">
                     <a href="#"><img style="height: 10em; object-fit: cover;" src="{{ product.image_url }}" alt=""></a>
                     <div class="down-content">
-                    <a href="#"><h4>{{ product.name }}</h4></a>
-                    <h6>${{ product.price }}</h6>
-                    <p>{{ product.desc|truncatechars:100 }}</p>
-                    <ul class="stars">
-                        {% for i in rating_range %}
-                            <li>
-                                <i 
-                                    class="fa fa-star" 
-                                    {% if forloop.counter > product.avg_rating %}
-                                    style="color:#121212;"
-                                    {% endif %}
-                                    >
-                                </i>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                    <span>Reviews ({{product.reviews.count}})</span>
+                        <a href="#"><h4>{{ product.name }}</h4></a>
+                        <h6>${{ product.price }}</h6>
+                        <p>{{ product.desc|truncatechars:35 }}</p>
+                        <ul class="stars">
+                            {% for i in rating_range %}
+                                <li>
+                                    <i 
+                                        class="fa fa-star" 
+                                        {% if forloop.counter > product.avg_rating %}
+                                        style="color:#121212;"
+                                        {% endif %}
+                                        >
+                                    </i>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <span>Reviews ({{product.reviews.count}})</span>
                     </div>
                 </div>
             </div>
